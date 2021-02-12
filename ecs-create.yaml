@@ -1,0 +1,11 @@
+- name: Create instances
+  hosts: localhost
+  vars_files: my_os_cloud.yaml
+  tasks:
+  - name: Create one or more instances
+    include_role:
+      name: create
+    loop: "{{ range(0, 2) }}"
+    loop_control:
+      extended: yes
+#

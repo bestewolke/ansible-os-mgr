@@ -1,0 +1,5 @@
+availability_zone: eu-de-03
+image: Standard_Debian_10_latest
+volume_size: 5
+key_name: KeyPair-Sebastian
+flavor: s3.medium.1

@@ -1,0 +1,5 @@
+- name: Create VPC
+  hosts: localhost
+  vars_files: my_os_cloud.yaml
+  roles:
+    - vpc-create

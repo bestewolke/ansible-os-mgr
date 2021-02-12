@@ -1,0 +1,20 @@
+- name: Get stopped instances
+  openstack.cloud.server_info:
+    cloud: "{{ cloud }}"
+#    server: test*
+    filters:
+      vm_state: stopped
+#      tags: ["second=tag"]
+  register: servers
+
+- name: Start instances
+  openstack.cloud.server_action:
+    cloud: "{{ cloud }}"
+    server: "{{ item.id }}"
+    action: start
+    wait: no
+  loop: "{{ servers.openstack_servers }}"
+  loop_control:
+    label: "{{ item.name }}"
+  async: 300
+  poll: 0

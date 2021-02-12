@@ -1,0 +1,17 @@
+- name: Get instances
+  openstack.cloud.server_info:
+    cloud: "{{ cloud }}"
+  register: servers
+
+- name: Delete instances
+  openstack.cloud.server:
+    cloud: "{{ cloud }}"
+    name: "{{ item.id }}"
+    delete_fip: yes
+    state: absent
+    wait: no
+  loop: "{{ servers.openstack_servers }}"
+  loop_control:
+    label: "{{ item.name }}"
+  async: 300
+  poll: 0

@@ -1,0 +1,19 @@
+- name: Generate ECS name
+  set_fact:
+    ecs_name: "ecs-ansible-{{ lookup('password', '/dev/null chars=ascii_lowercase,digits length=6') }}" 
+
+- name: Create instance {{ ansible_loop.index }} of {{ ansible_loop.length }}
+  openstack.cloud.server:
+    cloud: "{{ cloud }}"
+    name: "{{ ecs_name }}"
+    availability_zone: "{{ availability_zone }}"
+    image: "{{ image }}"
+    boot_from_volume: yes
+    volume_size: "{{ volume_size }}"
+    key_name: "{{ key_name }}"
+    timeout: 200
+    flavor: "{{ flavor }}"
+    security_groups: sg-ssh
+    network: network-ansible
+    reuse_ips: no
+    terminate_volume: yes

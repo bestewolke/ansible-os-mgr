@@ -1,0 +1,21 @@
+- name: Create network
+  openstack.cloud.network:
+    cloud: "{{ cloud }}"
+    name: network-ansible
+
+- name: Create subnet
+  openstack.cloud.subnet:
+    cloud: "{{ cloud }}"
+    network_name: network-ansible
+    name: subnet-ansible
+    cidr: 192.168.0.0/24
+    dns_nameservers:
+      - 1.1.1.1
+      - 8.8.8.8
+
+- name: Create router
+  openstack.cloud.router:
+    cloud: "{{ cloud }}"
+    name: router-ansible
+    interfaces:
+      - subnet-ansible

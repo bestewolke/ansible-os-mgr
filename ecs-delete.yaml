@@ -1,0 +1,5 @@
+- name: Delete instances
+  hosts: localhost
+  vars_files: my_os_cloud.yaml
+  roles:
+    - delete
