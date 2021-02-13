@@ -2,9 +2,9 @@
   hosts: localhost
   vars_files: my_os_cloud.yaml
   tasks:
-  - name: Create one or more instances
-    ansible.builtin.include_role:
-      name: ecs_create
-    loop: "{{ range(0, 2) }}"
-    loop_control:
-      extended: yes
+    - name: Create one or more instances
+      ansible.builtin.include_role:
+        name: ecs_create
+      loop: "{{ range(0, 2) }}"
+      loop_control:
+        extended: yes
