@@ -1,5 +1,5 @@
-- name: Delete instances
+- name: Stop running instances
   hosts: localhost
   vars_files: my_os_cloud.yaml
   roles:
-    - delete
+    - ecs_stop

@@ -1,5 +1,5 @@
-- name: Start stopped instances
+- name: Create Security Group
   hosts: localhost
   vars_files: my_os_cloud.yaml
   roles:
-    - start
+    - sg_create

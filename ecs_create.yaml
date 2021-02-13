@@ -4,7 +4,7 @@
   tasks:
   - name: Create one or more instances
     include_role:
-      name: create
+      name: ecs_create
     loop: "{{ range(0, 2) }}"
     loop_control:
       extended: yes

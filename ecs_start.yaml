@@ -1,5 +1,5 @@
-- name: Create Security Group
+- name: Start stopped instances
   hosts: localhost
   vars_files: my_os_cloud.yaml
   roles:
-    - sg-create
+    - ecs_start
