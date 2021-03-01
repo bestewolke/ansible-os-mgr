@@ -39,7 +39,7 @@ flavor: s3.medium.1
 #### Number of instances to deploy:
 You can adjust the number of VMs to create in [`ecs_create.yaml`](ecs_create.yaml), the example is set to two:
 ```
-loop: "{{ range(0, 2) }}"
+loop: "{{ range(0, 2)|list }}"
 ```
 
 ### Delete
