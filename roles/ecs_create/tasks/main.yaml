@@ -18,3 +18,5 @@
     reuse_ips: no
     terminate_volume: yes
     wait: no
+  async: 300
+  poll: 0
