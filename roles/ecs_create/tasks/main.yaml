@@ -17,3 +17,4 @@
     network: network-ansible
     reuse_ips: no
     terminate_volume: yes
+    wait: no
