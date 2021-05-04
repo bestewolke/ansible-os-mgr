@@ -14,7 +14,7 @@ So you always have the latest state and there is no need to manually keep track 
 ## clouds.yaml
 Authentication towards OpenStack is driven by the `clouds.yaml` file.  
 You can specify which cloud to use from there in the [`my_os_cloud.yaml`](my_os_cloud.yaml) file:
-```
+```yaml
 # Enter the name of your cloud to use from clouds.yaml
 cloud: open-telekom-cloud
 ```
@@ -28,7 +28,7 @@ The [`ecs_create.yaml`](ecs_create.yaml) playbook creates new VMs.
 
 #### Variables in [`roles/ecs_create/vars/main.yaml`](roles/ecs_create/vars/main.yaml):
 One thing you definitely have to change is the `key_name` variable to your own key name.
-```
+```yaml
 availability_zone: eu-de-03
 image: Standard_Debian_10_latest
 volume_size: 5
@@ -38,7 +38,7 @@ flavor: s3.medium.1
 
 #### Number of instances to deploy:
 You can adjust the number of VMs to create in [`ecs_create.yaml`](ecs_create.yaml), the example is set to two:
-```
+```yaml
 loop: "{{ range(0, 2)|list }}"
 ```
 
@@ -46,7 +46,7 @@ loop: "{{ range(0, 2)|list }}"
 The [`ecs_delete.yaml`](ecs_delete.yaml) playbook deletes VMs.   
 The default configuration will wipe all VMs in the current project. But you can work with filters to only delete certain VMs.  
 Those can be set directly in the role [`roles/ecs_delete/tasks/main.yaml`](roles/ecs_delete/tasks/main.yaml):
-```
+```yaml
 # Get only stopped instances named <test*> and with the tag "my=tag"
 - openstack.cloud.server_info:
     cloud: "{{ cloud }}"
