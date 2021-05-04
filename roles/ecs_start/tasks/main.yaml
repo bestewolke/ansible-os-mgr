@@ -1,10 +1,8 @@
 - name: Get stopped instances
   openstack.cloud.server_info:
     cloud: "{{ cloud }}"
-#    server: test*
     filters:
       vm_state: stopped
-#      tags: ["second=tag"]
   register: servers
 
 - name: Start instances
